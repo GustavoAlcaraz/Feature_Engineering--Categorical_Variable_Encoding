@@ -1,0 +1,73 @@
+## One Hot Encoding
+
+One hot encoding, consists in encoding each categorical variable with different boolean variables (also called dummy variables) which take values 0 or 1, indicating if a category is present in an observation.
+
+For example, for the categorical variable "Gender", with labels 'female' and 'male', we can generate the boolean variable "female", which takes 1 if the person is 'female' or 0 otherwise, or we can generate the variable "male", which takes 1 if the person is 'male' and 0 otherwise.
+
+For the categorical variable "colour" with values 'red', 'blue' and 'green', we can create 3 new variables called "red", "blue" and "green". These variables will take the value 1, if the observation is of the said colour or 0 otherwise. 
+
+
+### Encoding into k-1 dummy variables
+
+Note however, that for the variable "colour", by creating 2 binary variables, say "red" and "blue", we already encode **ALL** the information:
+
+- if the observation is red, it will be captured by the variable "red" (red = 1, blue = 0)
+- if the observation is blue, it will be captured by the variable "blue" (red = 0, blue = 1)
+- if the observation is green, it will be captured by the combination of "red" and "blue" (red = 0, blue = 0)
+
+We do not need to add a third variable "green" to capture that the observation is green.
+
+More generally, a categorical variable should be encoded by creating k-1 binary variables, where k is the number of distinct categories. In the case of gender, k=2 (male / female), therefore we need to create only 1 (k - 1 = 1) binary variable. In the case of colour, which has 3 different categories (k=3), we need to create 2 (k - 1 = 2) binary variables to capture all the information.
+
+One hot encoding into k-1 binary variables takes into account that we can use 1 less dimension and still represent the whole information: if the observation is 0 in all the binary variables, then it must be 1 in the final (not present) binary variable.
+
+**When one hot encoding categorical variables, we create k - 1 binary variables**
+
+
+Most machine learning algorithms, consider the entire data set while being fit. Therefore, encoding categorical variables into k - 1 binary variables, is better, as it avoids introducing redundant information.
+
+
+### Exception: One hot encoding into k dummy variables
+
+There are a few occasions when it is better to encode variables into k dummy variables:
+
+- when building tree based algorithms
+- when doing feature selection by recursive algorithms
+- when interested in determine the importance of each single category
+
+Tree based algorithms, as opposed to the majority of machine learning algorithms, **do not** evaluate the entire dataset while being trained. They randomly extract a subset of features from the data set at each node for each tree. Therefore, if we want a tree based algorithm to consider **all** the categories, we need to encode categorical variables into **k binary variables**.
+
+If we are planning to do feature selection by recursive elimination (or addition), or if we want to evaluate the importance of each single category of the categorical variable, then we will also need the entire set of binary variables (k) to let the machine learning model select which ones have the most predictive power.
+
+
+### Advantages of one hot encoding
+
+- Straightforward to implement
+- Makes no assumption about the distribution or categories of the categorical variable
+- Keeps all the information of the categorical variable
+- Suitable for linear models
+
+### Limitations
+
+- Expands the feature space
+- Does not add extra information while encoding
+- Many dummy variables may be identical, introducing redundant information
+
+
+### Notes
+
+If our datasets contain a few highly cardinal variables, we will end up very soon with datasets with thousands of columns, which may make training of our algorithms slow, and model interpretation hard.
+
+In addition, many of these dummy variables may be similar to each other, since it is not unusual that 2 or more variables share the same combinations of 1 and 0s. Therefore one hot encoding may introduce redundant or duplicated information even if we encode into k-1.
+
+
+## In this demo:
+
+We will see how to perform one hot encoding with:
+- Feature-Engine
+
+NOTE:
+
+The exercises are based on the training notes:
+Feature Engineering for Machine Learning
+by Soledad Galli
