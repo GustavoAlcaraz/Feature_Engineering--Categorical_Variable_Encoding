@@ -1,0 +1,60 @@
+## One Hot Encoding of Frequent Categories
+
+We learned in Section 3 that high cardinality and rare labels may result in certain categories 
+appearing only in the train set, therefore causing over-fitting, or only in the test set, and 
+then our models wouldn't know how to score those observations.
+
+We also learned in the previous lecture on one hot encoding, that if categorical variables contain 
+multiple labels, then by re-encoding them with dummy variables we will expand the feature space 
+dramatically.
+
+**In order to avoid these complications, we can create dummy variables only for the most frequent 
+categories**
+
+This procedure is also called one hot encoding of top categories.
+
+In fact, in the winning solution of the KDD 2009 cup: ["Winning the KDD Cup Orange Challenge with 
+Ensemble Selection"](http://www.mtome.com/Publications/CiML/CiML-v3-book.pdf), the authors limit 
+one hot encoding to the 10 most frequent labels of the variable. This means that they would make 
+one binary variable for each of the 10 most frequent labels only.
+
+OHE of frequent or top categories is equivalent to grouping all the remaining categories under a 
+new category. We will have a better look at grouping rare values into a new category in a later 
+notebook in this section.
+
+
+### Advantages of OHE of top categories
+
+- Straightforward to implement
+- Does not require hrs of variable exploration
+- Does not expand massively the feature space
+- Suitable for linear models
+
+
+### Limitations
+
+- Does not add any information that may make the variable more predictive
+- Does not keep the information of the ignored labels
+
+
+Often, categorical variables show a few dominating categories while the remaining labels add little information. Therefore, OHE of top categories is a simple and useful technique.
+
+### Note
+
+The number of top variables is set arbitrarily. In the KDD competition the authors selected 10, but it could have been 15 or 5 as well. This number can be chosen arbitrarily or derived from data exploration.
+
+
+## In this demo:
+
+We will see how to perform one hot encoding with:
+
+- Feature-Engine
+
+ Advantages
+
+- quick
+- creates the same number of features in train and test set
+
+The exercise is based on the training notes:
+Feature Engineering for Machine Learning
+by Soledad Galli
