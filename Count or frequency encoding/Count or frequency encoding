@@ -1,0 +1,36 @@
+## Count or frequency encoding
+
+In count encoding we replace the categories by the count of the observations that show that category
+ in the dataset. Similarly, we can replace the category by the frequency -or percentage- of observations
+ in the dataset. That is, if 10 of our 100 observations show the colour blue, we would replace blue by
+ 10 if doing count encoding, or by 0.1 if replacing by the frequency. These techniques capture the 
+representation of each label in a dataset, but the encoding may not necessarily be predictive of 
+the outcome. These are however, very popular encoding methods in Kaggle competitions.
+
+The assumption of this technique is that the number observations shown by each variable is somewhat 
+informative of the predictive power of the category.
+
+
+### Advantages
+
+- Simple
+- Does not expand the feature space
+
+### Disadvantages
+
+- If 2 different categories appear the same amount of times in the dataset, that is, they appear in 
+the same number of observations, they will be replaced by the same number: may lose valuable information.
+
+For example, if there are 10 observations for the category blue and 10 observations for the category
+ red, both will be replaced by 10, and therefore, after the encoding, will appear to be the same thing. 
+
+
+Follow this [thread in Kaggle](https://www.kaggle.com/general/16927) for more information.
+
+
+
+## In this demo:
+
+We will see how to perform count or frequency encoding with:
+- pandas
+- Feature-Engine
