@@ -1,0 +1,30 @@
+## Integer Encoding
+
+Integer encoding consist in replacing the categories by digits from 1 to n (or 0 to n-1, depending the implementation), 
+where n is the number of distinct categories of the variable.
+
+The numbers are assigned arbitrarily. This encoding method allows for quick benchmarking of machine learning models. 
+
+
+### Advantages
+
+- Straightforward to implement
+- Does not expand the feature space
+
+
+### Limitations
+
+- Does not capture any information about the categories labels
+- Not suitable for linear models.
+
+Integer encoding is better suited for non-linear methods which are able to navigate through the arbitrarily assigned 
+digits to try and find patters that relate them to the target.
+
+
+## In this demo:
+
+We will see how to perform one hot encoding with:
+
+- Feature-Engine
+
+And the advantages and limitations of each implementation using the House Prices dataset.
