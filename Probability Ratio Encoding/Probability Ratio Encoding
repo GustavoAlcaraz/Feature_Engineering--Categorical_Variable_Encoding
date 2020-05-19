@@ -1,0 +1,66 @@
+## Target guided encodings
+
+In the previous lectures in this section, we learned how to convert a label into a number, by using one hot encoding, replacing by a digit or replacing by frequency or counts of observations. These methods are simple, make (almost) no assumptions and work generally well in different scenarios.
+
+There are however methods that allow us to capture information while pre-processing the labels of categorical variables. These methods include:
+
+- Ordering the labels according to the target
+- Replacing labels by the target mean (mean encoding / target encoding)
+- Replacing the labels by the probability ratio of the target being 1 or 0
+- Weight of evidence.
+
+All of the above methods have something in common:
+
+- the encoding is **guided by the target**, and
+- they create a **monotonic relationship** between the variable and the target.
+
+
+Monotonicity
+
+A monotonic relationship is a relationship that does one of the following:
+
+- (1) as the value of one variable increases, so does the value of the other variable; or
+- (2) as the value of one variable increases, the value of the other variable decreases.
+
+In this case, as the value of the independent variable (predictor) increases, so does the target, or conversely, as the value of the variable increases, the target value decreases.
+
+
+
+Advantages of target guided encodings
+
+- Capture information within the category, therefore creating more predictive features
+- Create a monotonic relationship between the variable and the target, therefore suitable for linear models
+- Do not expand the feature space
+
+Limitations
+
+- Prone to cause over-fitting
+- Difficult to cross-validate with current libraries
+
+
+Note
+
+The methods discussed in this and the coming 3 lectures can be also used on numerical variables, 
+after discretisation. This creates a monotonic relationship between the numerical variable and 
+the target, and therefore improves the performance of linear models. 
+I will discuss this in more detail in the section "Discretisation".
+
+===============================================================================
+
+Probability Ratio Encoding
+
+These encoding is suitable for classification problems only, where the target is binary.
+
+For each category, we calculate the mean of target=1, that is the probability of the target 
+being 1 ( P(1) ), and the probability of the target=0 ( P(0) ). And then, we calculate the 
+ratio P(1)/P(0), and replace the categories by that ratio.
+
+
+In this demo:
+
+We will see how to perform one hot encoding with:
+- pandas
+
+the exercise is based on the training notes:
+Feature Engineering for Machine Learning
+by Soledad Galli
