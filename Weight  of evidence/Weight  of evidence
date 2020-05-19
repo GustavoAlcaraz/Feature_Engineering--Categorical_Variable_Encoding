@@ -1,0 +1,41 @@
+Weight  of evidence
+
+Weight of Evidence (WoE) was developed primarily for the credit and financial industries to help
+ build more predictive models to evaluate the risk of loan default. That is, to predict how likely
+ the money lent to a person or institution is to be lost. Thus, Weight of Evidence is a measure of
+ the "strength” of a grouping technique to separate good and bad risk (default). 
+
+- WoE will be 0 if the P(Goods) / P(Bads) = 1, that is, if the outcome is random for that group.
+- If P(Bads) > P(Goods) the odds ratio will be < 1 and,
+- WoE will be < 0 if,  P(Goods) > P(Bads).
+
+WoE is well suited for Logistic Regression, because the Logit transformation is simply the log 
+of the odds, i.e., ln(P(Goods)/P(Bads)). Therefore, by using WoE-coded predictors in logistic 
+regression, the predictors are all prepared and coded to the same scale, and the parameters in 
+the linear logistic regression equation can be directly compared.
+
+The WoE transformation has three advantages:
+
+- It creates a monotonic relationship between the target and the independent variables.
+- It orders the categories on a "logistic" scale which is natural for logistic regression
+- The transformed variables can then be compared because they are on the same scale. Therefore, 
+it is possible to determine which one is more predictive.
+
+The WoE also has a limitation:
+
+- Prone to cause over-fitting
+
+
+For more details follow this 
+[link](http://documentation.statsoft.com/StatisticaHelp.aspx?path=WeightofEvidence/
+WeightofEvidenceWoEIntroductoryOverview)
+
+
+In this demo:
+
+We will see how to perform one hot encoding with:
+- pandas
+
+the exercise is based on the training notes:
+Feature Engineering for Machine Learning
+by Soledad Galli
