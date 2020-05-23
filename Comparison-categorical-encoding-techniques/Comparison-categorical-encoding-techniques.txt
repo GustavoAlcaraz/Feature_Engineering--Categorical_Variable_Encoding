@@ -1,0 +1,16 @@
+## Comparison of Categorical Variable Encodings
+
+In this lecture, we will compare the performance of the different feature categorical 
+encoding techniques..
+
+We will compare:
+
+- One hot encoding
+- Replacing labels by the count
+- Ordering labels according to target
+- Mean Encoding
+- WoE
+
+the exercise is based on the notes of:
+Feature Engineering for Machine Learning
+by Soledad Galli
